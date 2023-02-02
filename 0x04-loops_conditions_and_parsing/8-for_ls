@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# a Bash script that displays The content of the current directory
+# In a list format
+# Where only the part of the name after the first dash is displayed
+
+files=$(ls)
+
+# Loop through each file and extract the part of the name after the first dash
+for file in $files; do
+  # Use parameter expansion to extract the portion of the file name after the first dash
+  name=${file##*-}
+  # Display the extracted portion of the name
+  echo "$name"
+done 
