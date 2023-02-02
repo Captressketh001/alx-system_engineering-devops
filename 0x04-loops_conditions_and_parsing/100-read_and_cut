@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Write a Bash script that displays the content of the file /etc/passwd
+# Your script should only display username, userid, Home directory path for the user
+
+while read -r lines
+do
+  username=$(echo "$lines" | cut -d: -f1)
+  userid=$(echo "$lines" | cut -d: -f3)
+  homedir=$(echo "$lines" | cut -d: -f6)
+
+  echo "$username":"$userid":"$homedir"
+done < /etc/passwd
