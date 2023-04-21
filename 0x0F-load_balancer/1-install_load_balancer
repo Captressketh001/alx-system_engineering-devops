@@ -1,14 +1,22 @@
 # COnfigure HAProxy
 
 sudo apt-get update
-sudo apt-get intall haproxy -y
+sudo apt-get install haproxy -y
 
 server_config=\
 "
-frontend http-in
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend th3gr00t-tech-backend
     bind *:80
-    default_backend servers
-backend servers
+    default_backend th3gr00t-tech-backend
+
+backend th3gr00t-tech-backend
     balance roundrobin
     server 123901-web-01 34.232.77.172:80 check
     server 123901-web-02 54.89.58.221:80  check
