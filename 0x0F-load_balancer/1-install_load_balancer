@@ -15,5 +15,5 @@ backend servers
     server 123901-web-02 54.89.58.221:80  check
 "
 echo "$server_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
-sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
 sudo service haproxy start
