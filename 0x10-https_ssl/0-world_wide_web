@@ -4,7 +4,7 @@
 function domain(){
 	domain=$1
 	subdomain=$2
-	subdomains=("www" "web-01" "web-02" "lb-01")
+	subdomains=("www" "lb-01" "web-01" "web-02")
 
 	if [ -n "$subdomain" ]; then
 		subdomains=("$subdomain")
