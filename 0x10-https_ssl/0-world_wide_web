@@ -15,7 +15,7 @@ function domain(){
 		if [ -n "$output" ]; then
 			record_type=$(echo "$output" | awk '{print $4}')
 			destination=$(echo "$output" | awk '{print $5}')
-			echo "The subdomain $sub is a $record_type records and points to $destination"
+			echo "The subdomain $sub is a $record_type record and points to $destination"
 		fi
 	done
 
