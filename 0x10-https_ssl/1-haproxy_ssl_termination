@@ -1,0 +1,24 @@
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend captressketh-tech-backend
+    bind *:80
+    bind *:443 ssl crt /etc/letsencrypt/live/www.captressketh.tech/fullchain.pem
+    http-request redirect scheme https unless { ssl_fc }
+    http-request set-header X-Forwarded-Proto https
+    default_backend captressketh-tech-backend
+
+backend captressketh-tech-backend
+    balance roundrobin
+    server 123901-web-01 34.232.77.172:80 check
+    server 123901-web-02 54.89.58.221:80  check
+
+listen balancer
+        bind :80
+        balance roundrobin
+        server 123901-web-01 34.232.77.172:80 check
+        server 123901-web-02 54.89.58.221:80 check
