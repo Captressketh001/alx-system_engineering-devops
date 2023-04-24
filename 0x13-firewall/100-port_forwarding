@@ -8,6 +8,13 @@
 #   ufw-before-forward
 #
 
+# nat table
+*nat
+:POSTROUTING ACCEPT [0:0]
+# forward traffic from eth0 to eth1
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
+
 # Don't delete these required lines, otherwise there will be errors
 *filter
 :ufw-before-input - [0:0]
@@ -20,12 +27,6 @@
 # allow all on loopback
 -A ufw-before-input -i lo -j ACCEPT
 -A ufw-before-output -o lo -j ACCEPT
-
-# nat table rule
-*nat
-:POSTROUTING ACCEPT [0:0]
-# forward traffic
--A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
 
 # quickly process packets for which we already have a connection
 -A ufw-before-input -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
