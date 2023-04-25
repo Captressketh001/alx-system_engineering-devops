@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# backup and compress database
+
+# variables
+date=$(date +"%d-%m-%Y")
+
+file_name="$date.tar.gz"
+
+sudo mysqldump --all-databases -u root --password="$1" > backup.sql
+tar -czvf "$file_name" backup.sql
