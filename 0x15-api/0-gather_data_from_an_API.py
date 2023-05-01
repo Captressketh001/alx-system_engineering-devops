@@ -7,6 +7,7 @@ import requests
 from sys import argv
 
 if __name__ == '__main__':
+    url = 'https://jsonplaceholder.typicode.com/todos'
     employeeId = int(argv[1])
     userUrl = f'https://jsonplaceholder.typicode.com/users/{employeeId}'
     res = requests.get(userUrl)
@@ -14,7 +15,7 @@ if __name__ == '__main__':
         users = res.json()
         userName = users['name']
 
-    todoUrl = f'https://jsonplaceholder.typicode.com/todos/?userId={employeeId}'
+    todoUrl = f'{url}/?userId={employeeId}'
     res = requests.get(todoUrl)
     if res.status_code == 200:
         todo = res.json()
