@@ -7,12 +7,20 @@ import requests
 from sys import argv
 
 if __name__ == '__main__':
-    userId = argv[2]
-    url = 'https://jsonplaceholder.typicode.com/users/'
-    res = requests.get(url)
+    employeeId = int(argv[1])
+    userUrl = f'https://jsonplaceholder.typicode.com/users/{employeeId}'
+    res = requests.get(userUrl)
     if res.status_code == 200:
         users = res.json()
-        for i in users:
-            print(i)
-        
-    
+        userName = users['name']
+
+    todoUrl = f'https://jsonplaceholder.typicode.com/todos/?userId={employeeId}'
+    res = requests.get(todoUrl)
+    if res.status_code == 200:
+        todo = res.json()
+        no_of_tasks = len(todo)
+        completed_task = [x for x in todo if x.get('completed')]
+        done_task = len(completed_task)
+        print("Employee {} is done with tasks({}/{}):".format(userName, done_task, no_of_tasks))
+        for x in completed_task:
+            print(f"\t {x.get('title')}")
