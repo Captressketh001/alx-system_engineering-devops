@@ -21,6 +21,7 @@ if __name__ == '__main__':
         no_of_tasks = len(todo)
         completed_task = [x for x in todo if x.get('completed')]
         done_task = len(completed_task)
-        print("Employee {} is done with tasks({}/{}):".format(userName, done_task, no_of_tasks))
+        print("Employee {} is done with tasks({}/{}):".\
+              format(userName, done_task, no_of_tasks))
         for x in completed_task:
             print(f"\t {x.get('title')}")
