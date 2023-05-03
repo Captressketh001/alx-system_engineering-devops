@@ -31,7 +31,9 @@ if __name__ == '__main__':
         populate_user = {}
         for task in todo:
             user_json.append({
-                "task": task.get('title'), "completed": task.get('completed'), "username": userName
+                "task": task.get('title'),
+                "completed": task.get('completed'),
+                "username": userName
             })
         populate_user[employeeId] = user_json
         filename = '{}.json'.format(employeeId)
