@@ -27,10 +27,13 @@ if __name__ == '__main__':
     res = requests.get(url)
     if res.status_code == 200:
         todo = res.json()
-        
+
         csv_name = "{}.csv".format(employeeId)
         with open(csv_name, "w") as csvfile:
             writer = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_ALL)
             # writer.writeheader()
             for task in todo:
-                writer.writerow([employeeId, userName, task.get('completed'), task.get('title')])
+                writer.writerow([
+                    employeeId, userName,
+                    task.get('completed'),
+                    task.get('title')])
