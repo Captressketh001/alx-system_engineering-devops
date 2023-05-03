@@ -9,13 +9,16 @@ import csv
 import requests
 from sys import argv
 
+
 def export_to_csv():
     """
     This export to the data to csv
     """
     employeeId = int(argv[1])
-    url = 'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(employeeId)
-    userUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(employeeId)
+    url = 'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(
+        employeeId)
+    userUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(
+        employeeId)
     res = requests.get(userUrl)
     if res.status_code == 200:
         users = res.json()

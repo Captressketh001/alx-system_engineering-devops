@@ -13,8 +13,10 @@ def gather_from_api():
     This gets the info about the todo progress
     """
     employeeId = int(argv[1])
-    url = 'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(employeeId)
-    userUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(employeeId)
+    url = 'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(
+        employeeId)
+    userUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(
+        employeeId)
     res = requests.get(userUrl)
     if res.status_code == 200:
         users = res.json()
