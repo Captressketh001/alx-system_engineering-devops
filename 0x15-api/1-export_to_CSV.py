@@ -13,16 +13,15 @@ def export_to_csv():
     """
     This export to the data to csv
     """
-    url = 'https://jsonplaceholder.typicode.com/todos'
     employeeId = int(argv[1])
-    userUrl = f'https://jsonplaceholder.typicode.com/users/{employeeId}'
+    url = 'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(employeeId)
+    userUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(employeeId)
     res = requests.get(userUrl)
     if res.status_code == 200:
         users = res.json()
         userName = users['name']
 
-    todoUrl = f'{url}/?userId={employeeId}'
-    res = requests.get(todoUrl)
+    res = requests.get(url)
     if res.status_code == 200:
         todo = res.json()
         
