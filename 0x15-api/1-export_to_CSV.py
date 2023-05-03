@@ -10,7 +10,7 @@ import requests
 from sys import argv
 
 
-def export_to_csv():
+if __name__ == '__main__':
     """
     This export to the data to csv
     """
@@ -22,7 +22,7 @@ def export_to_csv():
     res = requests.get(userUrl)
     if res.status_code == 200:
         users = res.json()
-        userName = users['name']
+        userName = users['username']
 
     res = requests.get(url)
     if res.status_code == 200:
@@ -34,7 +34,3 @@ def export_to_csv():
             # writer.writeheader()
             for task in todo:
                 writer.writerow([employeeId, userName, task.get('completed'), task.get('title')])
-        
-
-if __name__ == '__main__':
-    export_to_csv()
