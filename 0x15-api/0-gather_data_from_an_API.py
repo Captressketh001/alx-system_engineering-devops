@@ -8,6 +8,7 @@ his/her TODO list progress
 import requests
 from sys import argv
 
+
 def gather_from_api():
     """
     This gets the info about the todo progress
