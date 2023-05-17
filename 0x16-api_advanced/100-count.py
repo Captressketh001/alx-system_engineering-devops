@@ -32,7 +32,3 @@ def count_words(subreddit, word_list, after=None, count={}):
         return count_words(subreddit, word_list, after, count)
     else:
         return
-
-
-if __name__ == '__main__':
-    pass

@@ -19,7 +19,3 @@ def recurse(subreddit, hot_list=[], after=None):
         return recurse(subreddit, hot_list, after)
     else:
         return None
-
-
-if __name__ == '__main__':
-    pass
